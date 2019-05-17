@@ -18,10 +18,11 @@ public class Board extends JPanel {
     private Cell Board[][];
 
     private Random rnd = new Random();
-    private static int numOfLeaves = DIMENSION*DIMENSION-1;
-    
-    private int[] posAnt = {rnd.nextInt(DIMENSION), rnd.nextInt(DIMENSION)};
-    
+    private Graphics g;
+    private static int numOfLeaves = DIMENSION * DIMENSION - 1;
+
+    private int[] posAnt;
+
     public Board() {
         this.posAnt = new int[2];
         Board = new Cell[DIMENSION][DIMENSION];
@@ -35,19 +36,41 @@ public class Board extends JPanel {
             }
             y += SIDE;
         }
+        posAnt[0] = rnd.nextInt(DIMENSION);
+        posAnt[1] = rnd.nextInt(DIMENSION);
         Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
     }
-    
-    public int getNumOfLeaves(){
+
+    public int getNumOfLeaves() {
         return numOfLeaves;
     }
-    
-    public void removeLeaf(){
+
+    public void removeLeaf() {
         numOfLeaves--;
     }
-    
-    public int[] getPosAnt(){
-        return posAnt;
+
+//    public int[] getPosAnt(){
+//        return posAnt;
+//    }
+    public void changeDirection(String s) {
+        switch (s) {
+            case "UP":
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
+                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                break;
+            case "DOWN":
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_D);
+                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                break;
+            case "LEFT":
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_L);
+                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                break;
+            case "RIGHT":
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_R);
+                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                break;
+        }
     }
 
 //    public void moveAnt(String s){
@@ -56,7 +79,6 @@ public class Board extends JPanel {
 //                Board[posAnt[0]][posAnt[1]-].changeContent(ANT.);
 //        }
 //    }
-    
     @Override
     public void paintComponent(Graphics g) {
         for (int i = 0; i < DIMENSION; i++) {

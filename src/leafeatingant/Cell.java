@@ -40,8 +40,8 @@ public class Cell {
 
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.WHITE);
-        g2d.fill(this.rectangle);
+//        g2d.setColor(Color.WHITE);
+//        g2d.fill(this.rectangle);
         this.content.paintComponent(g, this.rectangle.x, this.rectangle.y);
     }
 
