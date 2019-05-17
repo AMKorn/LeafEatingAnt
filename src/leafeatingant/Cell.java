@@ -13,19 +13,26 @@ public class Cell {
 
     private Rectangle2D.Float rectangle;
     Content content;
+    boolean empty;
 
-    public Cell(String s) {
-        this.content = new Content(s);
-    }
+//    public Cell(String s) {
+//        this.content = new Content(s);
+//        if(s != Content.EMPTY){
+//            empty = false;
+//        } else {
+//            empty = true;
+//        }
+//    }
     
     public Cell(Rectangle2D.Float r){
         this.rectangle = r;
+        content = new Content(Content.LEAF);
     }
 
-    public Cell(Rectangle2D.Float r, String s) {
-        this.rectangle = r;
-        this.content = new Content(s);
-    }
+//    public Cell(Rectangle2D.Float r, String s) {
+//        this.rectangle = r;
+//        this.content = new Content(s);
+//    }
     
     public void changeContent(String s){
         this.content = new Content(s);

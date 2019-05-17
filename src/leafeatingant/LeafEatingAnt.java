@@ -35,7 +35,11 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
     @Override
     public void keyTyped(KeyEvent ke) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
+        int key = ke.getKeyCode();
+//        switch (key) {
+//            case ke.VK_UP :
+//                
+//        
     }
 
     @Override

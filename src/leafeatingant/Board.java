@@ -14,11 +14,12 @@ public class Board extends JPanel {
 
     private static final int DIMENSION = 20;
     private static final int SIZE = 800;
-    public static final int SIDE = SIZE / DIMENSION;
+    private static final int SIDE = SIZE / DIMENSION;
     private Cell Board[][];
 
     private Random rnd = new Random();
-
+    private static int numOfLeaves = DIMENSION*DIMENSION-1;
+    
     private int[] posAnt = {rnd.nextInt(DIMENSION), rnd.nextInt(DIMENSION)};
     
     public Board() {
@@ -29,14 +30,33 @@ public class Board extends JPanel {
             int x = 0;
             for (int j = 0; j < DIMENSION; j++) {
                 Rectangle2D.Float rectangle = new Rectangle2D.Float(x, y, SIDE, SIDE);
-                Board[i][j] = new Cell(rectangle, Content.LEAF);
+                Board[i][j] = new Cell(rectangle/*, Content.LEAF*/);
                 x += SIDE;
             }
             y += SIDE;
         }
         Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
     }
+    
+    public int getNumOfLeaves(){
+        return numOfLeaves;
+    }
+    
+    public void removeLeaf(){
+        numOfLeaves--;
+    }
+    
+    public int[] getPosAnt(){
+        return posAnt;
+    }
 
+//    public void moveAnt(String s){
+//        switch (s) {
+//            case "up":
+//                Board[posAnt[0]][posAnt[1]-].changeContent(ANT.);
+//        }
+//    }
+    
     @Override
     public void paintComponent(Graphics g) {
         for (int i = 0; i < DIMENSION; i++) {

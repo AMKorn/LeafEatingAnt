@@ -46,6 +46,6 @@ public class Content {
 //    }
 
     void paintComponent(Graphics g, float x, float y) {
-        g.drawImage(img,(int) x + 10, (int) y + 10, null);
+        g.drawImage(img,(int) x, (int) y, null);
     }
 }
