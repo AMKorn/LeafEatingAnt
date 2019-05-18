@@ -80,7 +80,8 @@ public class Board extends JPanel {
     }
 
     public void moveAnt() {
-        switch (currentDirection) {
+        try{
+            switch (currentDirection) {
             case UP:
                 if (!Board[posAnt[0] - 1][posAnt[1]].isEmpty()) {
                     removeLeaf();
@@ -113,6 +114,10 @@ public class Board extends JPanel {
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
                 posAnt[1]++;
                 break;
+            }
+        } catch (ArrayIndexOutOfBoundsException e){
+        } catch (Exception e){
+            System.err.println(e);
         }
     }
 

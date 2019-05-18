@@ -1,6 +1,6 @@
 package leafeatingant;
 
-import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
@@ -18,7 +18,6 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
         board = new Board();
         this.getContentPane().add(board);
         this.setSize(board.getPreferredSize());
-//        this.setBackground(Color.BLACK);
         this.pack();
         this.setResizable(false);
         this.addKeyListener(this);
@@ -66,6 +65,12 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
                 break;
         }
         board.repaint();
+        if(board.getNumOfLeaves()==0){
+            Toolkit.getDefaultToolkit().beep();
+                ImageIcon icon = new ImageIcon("sprites/hoja.png");
+                JOptionPane.showMessageDialog(null, "Te has comido todas las hojas!",
+                        "Victoria!", JOptionPane.INFORMATION_MESSAGE, icon);
+        }
     }
-
+    
 }
