@@ -56,19 +56,20 @@ public class Board extends JPanel {
         switch (s) {
             case "UP":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
-                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+//                Board.repaint();
                 break;
             case "DOWN":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_D);
-                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
                 break;
             case "LEFT":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_L);
-                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
                 break;
             case "RIGHT":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_R);
-                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
                 break;
         }
     }

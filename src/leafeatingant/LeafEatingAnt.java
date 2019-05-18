@@ -45,18 +45,25 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        System.out.println("I'm here");
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        System.out.println("I'm here");
         int key = ke.getKeyCode();
-        if (key == ke.VK_UP) {
-            board.changeDirection("UP");
-        } else if (key == ke.VK_DOWN) {
-            board.changeDirection("DOWN");
-        } else if (key == ke.VK_LEFT) {
-            board.changeDirection("LEFT");
-        } else if (key == ke.VK_RIGHT) {
-            board.changeDirection("RIGHT");
+        switch (key) {
+            case KeyEvent.VK_UP:
+                board.changeDirection("UP");
+                break;
+            case KeyEvent.VK_DOWN:
+                board.changeDirection("DOWN");
+                break;
+            case KeyEvent.VK_LEFT:
+                board.changeDirection("LEFT");
+                break;
+            case KeyEvent.VK_RIGHT:
+                board.changeDirection("RIGHT");
+                break;
+            default:
+                break;
         }
+        board.repaint();
     }
 
 }
