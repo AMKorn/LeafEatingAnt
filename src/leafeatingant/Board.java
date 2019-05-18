@@ -111,7 +111,7 @@ public class Board extends JPanel {
                 }
                 Board[posAnt[0]][posAnt[1] + 1].changeContent(Content.ANT_R);
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
-                posAnt[0]--;
+                posAnt[1]++;
                 break;
         }
     }
