@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 /**
- *
+ * Clase que incluye todos los sprites del juego y el contenido de las celdas.
  * @author Andreas Manuel Korn
  */
 public class Content {
@@ -21,17 +21,14 @@ public class Content {
     
     private BufferedImage img;
     
+    /**
+     * Constructor de la clase que lee la imagen del directorio que recibe por
+     * parámetros.
+     * @param s - directorio de la imagen.
+     */
     public Content(String s){
         try {
             img = ImageIO.read(new File(s));
-        } catch (IOException e){
-            System.err.println(e);
-        }
-    }
-    
-    public Content(){
-        try {
-            img = ImageIO.read(new File(EMPTY));
         } catch (IOException e){
             System.err.println(e);
         }

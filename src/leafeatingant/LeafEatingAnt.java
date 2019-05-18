@@ -1,3 +1,8 @@
+/**
+ * Este juego consiste en una hormiga colocada aleatoriamente en un taablero
+ * 20x20 y tiene que comerse todas las hojas. La dirección se controla con las
+ * flechas, y se mueve pulsando espacio.
+ * */
 package leafeatingant;
 
 import java.awt.Toolkit;
@@ -6,7 +11,8 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 /**
- *
+ * La clase principal es la encargada de construir la ventana y del seguimiento 
+ * de las teclas.
  * @author Andreas Manuel Korn
  */
 public class LeafEatingAnt extends JFrame implements KeyListener {
@@ -34,19 +40,18 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // No hay función
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // No hay función
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-//        System.out.println("I'm here");
         int key = ke.getKeyCode();
-        switch (key) {
+        switch (key) { // Comprueba la tecla pulsada.
             case KeyEvent.VK_UP:
                 board.changeDirection("UP");
                 break;
@@ -60,17 +65,19 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
                 board.changeDirection("RIGHT");
                 break;
             case KeyEvent.VK_SPACE:
-                board.moveAnt();
+                board.moveAnt(); // La hormiga no se mueve hasta que se pulse espacio.
+                break;
             default:
                 break;
         }
         board.repaint();
-        if(board.getNumOfLeaves()==0){
+        if (board.getNumOfLeaves() == 0) {
             Toolkit.getDefaultToolkit().beep();
-                ImageIcon icon = new ImageIcon("sprites/hoja.png");
-                JOptionPane.showMessageDialog(null, "Te has comido todas las hojas!",
-                        "Victoria!", JOptionPane.INFORMATION_MESSAGE, icon);
+            ImageIcon icon = new ImageIcon("sprites/hoja.png");
+            JOptionPane.showMessageDialog(null, "¡Te has comido todas las hojas!", // Salta un mensaje de victoria cuando la hormiga se come
+                    "¡Victoria!", JOptionPane.INFORMATION_MESSAGE, icon);          // todas las hojas.
+            System.exit(0); // Cierra el programa cuando se han comido todas las hojas.
         }
     }
-    
+
 }
