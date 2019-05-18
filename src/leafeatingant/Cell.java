@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 public class Cell {
 
     private Rectangle2D.Float rectangle;
-    Content content;
+    private Content content;
     boolean empty;
 
 //    public Cell(String s) {
@@ -27,6 +27,7 @@ public class Cell {
     public Cell(Rectangle2D.Float r){
         this.rectangle = r;
         content = new Content(Content.LEAF);
+        empty = false;
     }
 
 //    public Cell(Rectangle2D.Float r, String s) {
@@ -36,6 +37,17 @@ public class Cell {
     
     public void changeContent(String s){
         this.content = new Content(s);
+        if(s.equals(Content.EMPTY)){
+            empty = true;
+        }
+    }
+    
+    public Content getContent(){
+        return content;
+    }
+    
+    public boolean isEmpty(){
+        return empty;
     }
 
     public void paintComponent(Graphics g) {
@@ -45,11 +57,11 @@ public class Cell {
         this.content.paintComponent(g, this.rectangle.x, this.rectangle.y);
     }
 
-    public Cell() {
-        this.content = new Content();
-    }
+//    public Cell() {
+//        this.content = new Content();
+//    }
 
-    public void emptyCell() {
-        this.content = new Content(Content.EMPTY);
-    }
+//    public void emptyCell() {
+//        this.content = new Content(Content.EMPTY);
+//    }
 }

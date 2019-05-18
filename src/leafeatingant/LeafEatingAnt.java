@@ -60,6 +60,8 @@ public class LeafEatingAnt extends JFrame implements KeyListener {
             case KeyEvent.VK_RIGHT:
                 board.changeDirection("RIGHT");
                 break;
+            case KeyEvent.VK_SPACE:
+                board.moveAnt();
             default:
                 break;
         }

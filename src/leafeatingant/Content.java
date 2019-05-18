@@ -37,14 +37,6 @@ public class Content {
         }
     }
     
-//    public void changeContent(String s){
-//        try {
-//            img = ImageIO.read(new File(s));
-//        } catch (IOException e){
-//            System.err.println(e);
-//        }
-//    }
-
     void paintComponent(Graphics g, float x, float y) {
         g.drawImage(img,(int) x, (int) y, null);
     }

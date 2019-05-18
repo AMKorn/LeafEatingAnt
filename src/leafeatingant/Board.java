@@ -17,6 +17,11 @@ public class Board extends JPanel {
     private static final int SIDE = SIZE / DIMENSION;
     private Cell Board[][];
 
+    private enum direction {
+        UP, DOWN, LEFT, RIGHT
+    }
+    private static direction currentDirection;
+
     private Random rnd = new Random();
     private Graphics g;
     private static int numOfLeaves = DIMENSION * DIMENSION - 1;
@@ -39,6 +44,7 @@ public class Board extends JPanel {
         posAnt[0] = rnd.nextInt(DIMENSION);
         posAnt[1] = rnd.nextInt(DIMENSION);
         Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
+        currentDirection = direction.UP;
     }
 
     public int getNumOfLeaves() {
@@ -56,30 +62,60 @@ public class Board extends JPanel {
         switch (s) {
             case "UP":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_U);
-//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
-//                Board.repaint();
+                currentDirection = direction.UP;
                 break;
             case "DOWN":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_D);
-//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                currentDirection = direction.DOWN;
                 break;
             case "LEFT":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_L);
-//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                currentDirection = direction.LEFT;
                 break;
             case "RIGHT":
                 Board[posAnt[0]][posAnt[1]].changeContent(Content.ANT_R);
-//                Board[posAnt[0]][posAnt[1]].paintComponent(g);
+                currentDirection = direction.RIGHT;
                 break;
         }
     }
 
-//    public void moveAnt(String s){
-//        switch (s) {
-//            case "up":
-//                Board[posAnt[0]][posAnt[1]-].changeContent(ANT.);
-//        }
-//    }
+    public void moveAnt() {
+        switch (currentDirection) {
+            case UP:
+                if (!Board[posAnt[0] - 1][posAnt[1]].isEmpty()) {
+                    removeLeaf();
+                }
+                Board[posAnt[0] - 1][posAnt[1]].changeContent(Content.ANT_U);
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
+                posAnt[0]--;
+                break;
+            case DOWN:
+                if (!Board[posAnt[0] + 1][posAnt[1]].isEmpty()) {
+                    removeLeaf();
+                }
+                Board[posAnt[0] + 1][posAnt[1]].changeContent(Content.ANT_D);
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
+                posAnt[0]++;
+                break;
+            case LEFT:
+                if (!Board[posAnt[0]][posAnt[1] - 1].isEmpty()) {
+                    removeLeaf();
+                }
+                Board[posAnt[0]][posAnt[1] - 1].changeContent(Content.ANT_L);
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
+                posAnt[1]--;
+                break;
+            case RIGHT:
+                if (!Board[posAnt[0]][posAnt[1] + 1].isEmpty()) {
+                    removeLeaf();
+                }
+                Board[posAnt[0]][posAnt[1] + 1].changeContent(Content.ANT_R);
+                Board[posAnt[0]][posAnt[1]].changeContent(Content.EMPTY);
+                posAnt[0]--;
+                break;
+        }
+    }
+
     @Override
     public void paintComponent(Graphics g) {
         for (int i = 0; i < DIMENSION; i++) {
